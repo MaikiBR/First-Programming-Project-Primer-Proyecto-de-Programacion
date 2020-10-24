@@ -1,0 +1,43 @@
+def ventas():
+    # Esta función esta encargada de mandar a llamar a los diferentes archivos del código mediante importación.
+    ven = """
+-----------------------------------------------
+              SECCIÓN DE VENTAS
+-----------------------------------------------
+[E] Registro de Ventas
+[F] Consulta de Ventas
+[M] Regresar al Menú Principal
+-----------------------------------------------"""
+
+    print(ven)
+    v = input('¿A qué opción quieres acceder?\n').upper()
+
+    while v == 'E' or 'F' or 'M':
+        # De su función principal siempre y cuando se ingrese una de las opciones aceptadas en el ciclo while.
+        # Una vez que el ciclo while es iniciado y se ingresa una opción aceptada, el código procederá a realizar
+        # las instrucciones declaradas dentro de la función que se mando a llamar por medio de la importación
+        # entre archivos.
+        #
+        # Submenú de Ventas
+        if v == 'E':
+            print('Accediendo a la Registro de Ventas...')  # Redirección al Registro de Ventas.
+            from RegistroVentas import reg_ventas
+            reg_ventas()
+            break
+        elif v == 'F':
+            print('Accediendo a la Consulta de Ventas...')  # Redirección a la Consulta de Ventas.
+            from ConsultaVentas import con_ventas
+            con_ventas()
+            break
+        elif v == 'M':
+            print('Regresando al Menú Principal...')  # Regresar al Menú Principal sin tener que terminar el programa.
+            from ProyectoIntegradorMenú import menu
+            menu()
+            break
+        else:
+            print('Esa opción no esta disponible, vuelve a intentarlo.')  # Cortafuegos / Limitación
+            v = input().upper()
+    return ventas()
+
+
+ventas()
