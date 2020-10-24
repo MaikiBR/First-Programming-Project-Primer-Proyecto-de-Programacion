@@ -1,0 +1,43 @@
+def inventario():
+    # Esta función esta encargada de mandar a llamar a los diferentes archivos de código mediante la importación.
+    inv = """
+-------------------------------------------------
+              SECCIÓN DE INVENTARIO
+-------------------------------------------------
+[C] Registro de Inventario 
+[D] Consulta de Inventario
+[M] Regresar al Menú Principal
+-------------------------------------------------"""
+
+    print(inv)
+    i = input('¿A qué opción quieres acceder?\n').upper()
+
+    while i == 'C' or 'D' or 'M':
+        # De su función principal siempre y cuando se ingrese una de las opciones aceptadas en el ciclo while.
+        # Una vez que el ciclo while es iniciado y se ingresa una opción aceptada, el código procederá a realizar
+        # las instrucciones declaradas dentro de la función que se mando a llamar por medio de la importación
+        # entre archivos.
+        #
+        # Submenú de Inventario
+        if i == 'C':
+            print('Accediendo a la Registro de Inventario...')  # Redirección al Registro de Inventario.
+            from RegistroInventario import reg_inventario
+            reg_inventario()
+            break
+        elif i == 'D':
+            print('Accediendo a la Consulta de Inventario...')  # Redirección a la Consulta de Inventario.
+            from ConsultaInventario import con_inventario
+            con_inventario()
+            break
+        elif i == 'M':
+            print('Regresando al Menú Principal...')  # Regresar al Menú Principal sin tener que terminar el programa.
+            from ProyectoIntegradorMenú import menu
+            menu()
+            break
+        else:
+            print('Esa opción no esta disponible, vuelve a intentarlo.')  # Cortafuegos / Limitación
+            i = input().upper()
+    return inventario()
+
+
+inventario()
